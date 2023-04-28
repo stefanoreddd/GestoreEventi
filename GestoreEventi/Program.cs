@@ -1,5 +1,7 @@
 ﻿using GestoreEventi;
 
+
+
 Console.Write("Inserisci il nome dell'evento: ");
 string nome = Console.ReadLine();
 
@@ -15,6 +17,19 @@ int postiUser = int.Parse(Console.ReadLine());
 
 
 Evento evento1 = new Evento(nome, data, posti, postiUser);
+
+
+
+ProgrammaEventi programmaEventi = new ProgrammaEventi("Proteggiamo la nostra Terra");
+
+
+List<Evento> listaEventi = new List<Evento> { evento1, evento2 };
+
+programmaEventi.AddListaEventi(listaEventi);
+
+
+
+
 
 Console.WriteLine();
 Console.WriteLine("Posti disponibili: " + posti);
