@@ -80,7 +80,6 @@ namespace GestoreEventi
 
         public void PrenotaPosti(int postiUtente)
         {
-            Console.WriteLine("Quanti posti desideri prenotare?");
             postiUtente = int.Parse(Console.ReadLine());
 
             if(postiPrenotati > this.capienza)
@@ -102,7 +101,6 @@ namespace GestoreEventi
 
         public void CancellaPrenotazione(int postiCancellatiUtente)
         {
-            Console.WriteLine("Quanti posti desideri rimuovere?");
             postiCancellatiUtente = int.Parse(Console.ReadLine());
 
             if(postiCancellatiUtente > postiPrenotati)
