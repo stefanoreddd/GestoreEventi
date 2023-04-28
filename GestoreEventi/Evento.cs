@@ -80,7 +80,7 @@ namespace GestoreEventi
         public void PrenotaPosti(int postiUtente)
         {
 
-            if (postiPrenotati > this.capienza && this.data < DateTime.Now)
+            if (postiPrenotati > this.capienza && this.data > DateTime.Now)
             {
                 throw new ArgumentException("Non ci sono posti a sufficienza da prenotare.");
             }
@@ -88,7 +88,7 @@ namespace GestoreEventi
             {
                 throw new ArgumentException("Posti disponibili per questo evento terminati.");
             }
-            else if (this.data > DateTime.Now)
+            else if (this.data < DateTime.Now)
             {
                 throw new ArgumentException("Questo evento è terminato.");
             }
@@ -102,11 +102,11 @@ namespace GestoreEventi
         public void CancellaPrenotazione(int postiCancellatiUtente)
         {
 
-            if (postiCancellatiUtente > postiPrenotati && this.data < DateTime.Now)
+            if (postiCancellatiUtente > postiPrenotati && this.data > DateTime.Now)
             {
                 throw new ArgumentException("Non ci sono posti a sufficienza da cancellare.");
             }
-            else if (this.data > DateTime.Now)
+            else if (this.data < DateTime.Now)
             {
                 throw new ArgumentException("Questo evento è terminato.");
             }
