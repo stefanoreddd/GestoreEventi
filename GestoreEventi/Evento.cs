@@ -99,11 +99,11 @@ namespace GestoreEventi
 
         }
 
-        public void CancellaPrenotazione(int postiCancellatiUtente)
+        /*public void CancellaPrenotazione(int postiCancellatiUtente)
         {
             
 
-            if (postiPrenotati - postiCancellatiUtente < postiPrenotati && this.data > DateTime.Now)
+            if (postiPrenotati - postiCancellatiUtente < postiPrenotati && this.data > DateTime.Now && postiCancellatiUtente < postiPrenotati)
             {
                 postiPrenotati -= postiCancellatiUtente;
             }
@@ -112,6 +112,26 @@ namespace GestoreEventi
                 throw new ArgumentException("Impossibile cancellare la prenotazione.");
             }
             
+        }*/
+
+        public void CancellaPrenotazione(int postiCancellatiUtente)
+        {
+            if (postiCancellatiUtente < 0)
+            {
+                throw new Exception("Il numero delle disdette è negativo. Riprova.");
+            }
+            else if (postiCancellatiUtente < this.postiPrenotati)
+            {
+                throw new Exception("Il numero delle disdette è superiore alle prenotazioni. Riprova.");
+            }
+            else if (postiPrenotati - postiCancellatiUtente > postiPrenotati || this.data < DateTime.Now)
+            {
+                throw new Exception("Impossibile disdire la prenotazione per questo evento.");
+            }
+            else
+            {
+                this.postiPrenotati -= postiCancellatiUtente;
+            }
         }
 
 

@@ -12,14 +12,16 @@ namespace GestoreEventi
         //ATTRIBUTI
 
         private string titolo;
+        private int numeroEventi;
         private List<Evento> eventi;
 
 
         //COSTRUTTORE
 
-        public ProgrammaEventi(string titolo)
+        public ProgrammaEventi(string titolo, int numeroEventi)
         {
             this.titolo = titolo;
+            this.numeroEventi = numeroEventi;
             this.eventi = new List<Evento>();
         }
 
@@ -29,6 +31,11 @@ namespace GestoreEventi
         public string GetTitolo()
         {
             return this.titolo;
+        }
+
+        public int GetNumeroEventi()
+        {
+            return this.numeroEventi;
         }
 
         public List<Evento> GetEventi()
@@ -42,6 +49,11 @@ namespace GestoreEventi
         public void SetTitolo(string titolo)
         {
             this.titolo = titolo;
+        }
+
+        public void SetNumeroEventi(int numeroEventi)
+        {
+            this.numeroEventi = numeroEventi;
         }
 
         public void SetEvent(List<Evento> eventi)
@@ -84,12 +96,12 @@ namespace GestoreEventi
             }
         }
 
-        public int NumeroEventi(List<Evento> eventi)
+        public int NumeroEventi()
         {
-            return eventi.Count();
+            return eventi.Count;
         }
 
-        public void CancellaLista(List<Evento> eventi)
+        public void CancellaLista()
         {
             eventi.Clear();
         }
