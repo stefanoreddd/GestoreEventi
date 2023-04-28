@@ -14,37 +14,40 @@ int postiUser = int.Parse(Console.ReadLine());
 
 
 
-Evento evento1 = new Evento(nome, data, posti);
+Evento evento1 = new Evento(nome, data, posti, postiUser);
 
 Console.WriteLine();
 Console.WriteLine("Posti disponibili: " + posti);
 Console.WriteLine("Posti prenotati: " + postiUser);
 
 
-Console.Write("Vuoi disdire dei posti? (si/no) ");
-string rispostaUser = Console.ReadLine();
+bool userNonVuolEliminarePosti = false;
 
-bool eliminaPosti = true;
-
-while (eliminaPosti = true)
+while (!userNonVuolEliminarePosti)
 {
+    Console.Write("Vuoi disdire dei posti? (si/no) ");
+    string rispostaUser = Console.ReadLine().ToLower();
 
     if (rispostaUser == "si")
     {
         Console.Write("Indica il numero di posti da disdire: ");
         int postiCancellatiUser = int.Parse(Console.ReadLine());
         evento1.CancellaPrenotazione(postiCancellatiUser);
+        userNonVuolEliminarePosti = false;
+        Console.WriteLine();
+        Console.WriteLine("Posti disponibili: " + evento1.GetCapienza());
+        Console.WriteLine("Posti prenotati: " + evento1.GetPostiPrenotati());
     }
     else if (rispostaUser == "no")
     {
         Console.WriteLine("Ok, va bene!");
-        eliminaPosti = false;
+        userNonVuolEliminarePosti = true;
     }
 }
 
-Console.WriteLine();
-Console.WriteLine("Posti disponibili: " + posti);
-Console.WriteLine("Posti prenotati: " + postiUser);
+
+
+
 
 
 

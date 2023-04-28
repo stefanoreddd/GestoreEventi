@@ -13,20 +13,20 @@ namespace GestoreEventi
         private string titolo;
         private DateTime data;
         private int capienza;
-        private static int postiPrenotati = 0;
+        private int postiPrenotati;
 
 
         //COSTRUTTORE
-        public Evento(string titolo, DateTime data, int capienza)
+        public Evento(string titolo, DateTime data, int capienza, int postiPrenotati = 0)
         {
             this.titolo = titolo;
-            this.data = new DateTime();
+            this.data = data;
             this.capienza = capienza;
             if(capienza < 0)
             {
-                throw new Exception("La capienza non può avere un numero negativo.");
+                throw new ArgumentException("La capienza non può avere un numero negativo.");
             }
-            postiPrenotati++;
+            this.postiPrenotati = postiPrenotati;
         }
 
 
@@ -80,7 +80,7 @@ namespace GestoreEventi
         public void PrenotaPosti(int postiUtente)
         {
 
-            if (postiPrenotati > this.capienza && this.data > DateTime.Now)
+            if (postiPrenotati > this.capienza || this.data > DateTime.Now)
             {
                 throw new ArgumentException("Non ci sono posti a sufficienza da prenotare.");
             }
@@ -101,19 +101,17 @@ namespace GestoreEventi
 
         public void CancellaPrenotazione(int postiCancellatiUtente)
         {
+            
 
-            if (postiCancellatiUtente > postiPrenotati && this.data > DateTime.Now)
-            {
-                throw new ArgumentException("Non ci sono posti a sufficienza da cancellare.");
-            }
-            else if (this.data < DateTime.Now)
-            {
-                throw new ArgumentException("Questo evento è terminato.");
-            }
-            else
+            if (postiPrenotati - postiCancellatiUtente < postiPrenotati && this.data > DateTime.Now)
             {
                 postiPrenotati -= postiCancellatiUtente;
             }
+            else
+            {
+                throw new ArgumentException("Impossibile cancellare la prenotazione.");
+            }
+            
         }
 
 
