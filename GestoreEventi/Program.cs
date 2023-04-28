@@ -92,7 +92,7 @@ DateTime dataConferenza = DateTime.Parse(Console.ReadLine());
 Console.Write("Inserisci il numero di posti per la conferenza: ");
 int postiConferenza = int.Parse(Console.ReadLine());
 int postiPrenotati = 0;
-Console.Write("Inserisci il relatore della conferenza");
+Console.Write("Inserisci il relatore della conferenza: ");
 string relatoreConferenza = Console.ReadLine();
 Console.Write("Inserisci il prezzo della conferenza: ");
 double prezzoConferenza = double.Parse(Console.ReadLine());
