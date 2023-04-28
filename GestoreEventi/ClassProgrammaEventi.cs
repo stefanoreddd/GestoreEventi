@@ -95,17 +95,6 @@ namespace GestoreEventi
             }
         }
 
-        /*public void EventiPerData(DateTime dataEvento)
-        {
-            foreach (Evento evento in eventi)
-            {
-                if (dataEvento == evento.GetData())
-                {
-                    evento.ToString();
-                }
-            }
-        }*/
-
         public static void StampaListaEventi(List<Evento> eventi)
         {
             foreach(Evento evento in eventi)
