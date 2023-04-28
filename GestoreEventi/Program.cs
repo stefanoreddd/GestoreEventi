@@ -79,5 +79,30 @@ string eventoPerData = Console.ReadLine();
 DateTime dataEvento = DateTime.Parse(eventoPerData);
 programmaEventi.EventiPerData(dataEvento);
 
-Console.WriteLine("Cancello tutti gli eventi.");
-programmaEventi.CancellaLista();
+/*Console.WriteLine("Cancello tutti gli eventi.");
+programmaEventi.CancellaLista();*/
+
+Console.WriteLine("------ BONUS ------");
+Console.WriteLine();
+Console.WriteLine("Aggiungiamo anche una conferenza!");
+Console.Write("Inserisci il nome della conferenza: ");
+string titoloConferenza = Console.ReadLine();
+Console.Write("Inserisci la data della conferenza: ");
+DateTime dataConferenza = DateTime.Parse(Console.ReadLine());
+Console.Write("Inserisci il numero di posti per la conferenza: ");
+int postiConferenza = int.Parse(Console.ReadLine());
+int postiPrenotati = 0;
+Console.Write("Inserisci il relatore della conferenza");
+string relatoreConferenza = Console.ReadLine();
+Console.Write("Inserisci il prezzo della conferenza: ");
+double prezzoConferenza = double.Parse(Console.ReadLine());
+
+Conferenza conferenza = new Conferenza(titoloConferenza, dataConferenza, postiConferenza, postiPrenotati, relatoreConferenza, prezzoConferenza);
+
+programmaEventi.AddEvento(conferenza);
+
+
+
+Console.WriteLine("Ecco il tuo programma eventi con anche le conferenze: ");
+Console.WriteLine(programmaEventi.ToString());
+
