@@ -23,7 +23,7 @@ Evento evento1 = new Evento(nome, data, posti, postiUser);
 ProgrammaEventi programmaEventi = new ProgrammaEventi("Proteggiamo la nostra Terra");
 
 
-List<Evento> listaEventi = new List<Evento> { evento1, evento2 };
+List<Evento> listaEventi = new List<Evento> { evento1 };
 
 programmaEventi.AddListaEventi(listaEventi);
 
