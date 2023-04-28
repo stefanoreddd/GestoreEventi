@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -137,7 +138,8 @@ namespace GestoreEventi
 
         public override string ToString()
         {
-            return data.ToString("dd/MM/yyyy") + titolo;
+            string infoEvento = data.ToString("dd/MM/yyyy") + " - " + this.titolo + "\n";
+            return infoEvento;
         }
 
     }

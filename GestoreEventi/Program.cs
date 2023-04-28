@@ -4,7 +4,7 @@
 
 Console.Write("Inserisci il nome del tuo programma eventi: ");
 string titoloProgramma = Console.ReadLine();
-Console.WriteLine("Indica il numero di eventi da inserire: ");
+Console.Write("Indica il numero di eventi da inserire: ");
 int numeroEventi = int.Parse(Console.ReadLine());
 
 ProgrammaEventi programmaEventi = new ProgrammaEventi(titoloProgramma, numeroEventi);
@@ -68,6 +68,21 @@ for (int i = 0; i < numeroEventi; i++)
     }
 
 }
+
+Console.WriteLine("Numero di eventi presenti in programma: " + programmaEventi.NumeroEventi());
+Console.WriteLine("------ EVENTI IN PROGRAMMA ------");
+Console.WriteLine(programmaEventi.ToString());
+Console.WriteLine("---------------------------------");
+
+Console.Write("Per quale data vuoi controllare gli eventi in programma? (gg/MM/yyyy) ");
+string eventoPerData = Console.ReadLine();
+DateTime dataEvento = DateTime.Parse(eventoPerData);
+programmaEventi.EventiPerData(dataEvento);
+
+Console.WriteLine("Cancello tutti gli eventi.");
+programmaEventi.CancellaLista();
+
+
 
 
 

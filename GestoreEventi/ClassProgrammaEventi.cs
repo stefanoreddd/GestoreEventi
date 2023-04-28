@@ -77,22 +77,40 @@ namespace GestoreEventi
             this.eventi.Add(evento);
         }
 
-        public void EventiPerData(DateTime dateTime)
+        public void EventiPerData(DateTime dataEvento)
+        {
+            List<Evento> listaEventiperData = new List<Evento>();
+            foreach (Evento evento in eventi)
+            {
+                if (dataEvento == evento.GetData())
+                {
+                    listaEventiperData.Add(evento);
+                }
+
+            }
+
+            foreach (Evento evento in listaEventiperData)
+            {
+                Console.WriteLine(dataEvento.ToString("dd/MM/yyyy") + " - " + this.titolo + "\n");
+            }
+        }
+
+        /*public void EventiPerData(DateTime dataEvento)
         {
             foreach (Evento evento in eventi)
             {
-                if (dateTime == evento.GetData())
+                if (dataEvento == evento.GetData())
                 {
                     evento.ToString();
                 }
             }
-        }
+        }*/
 
         public static void StampaListaEventi(List<Evento> eventi)
         {
             foreach(Evento evento in eventi)
             {
-                evento.ToString();
+                Console.WriteLine(eventi);
             }
         }
 
@@ -108,8 +126,7 @@ namespace GestoreEventi
 
         public override string ToString()
         {
-            string programmaEventi = "----------" + "\n";
-            programmaEventi += this.titolo + "\n";
+            string programmaEventi = "Titolo programma: " + this.titolo + "\n";
 
             foreach (Evento evento in eventi)
             {
