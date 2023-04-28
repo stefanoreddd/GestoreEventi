@@ -20,7 +20,7 @@ namespace GestoreEventi
         public Evento(string titolo, DateTime data, int capienza)
         {
             this.titolo = titolo;
-            this.data = data;
+            this.data = new DateTime();
             this.capienza = capienza;
             if(capienza < 0)
             {
@@ -66,10 +66,9 @@ namespace GestoreEventi
 
         public void SetData(DateTime data)
         {
-            this.data = data;
-            DateTime dataAttuale = DateTime.Now;
+            this.data = data; 
 
-            if(data < dataAttuale)
+            if(data < DateTime.Now)
             {
                 throw new ArgumentException("La data non può essere antecedente alla data attuale. Riprova.");
             }
