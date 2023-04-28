@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -77,14 +78,50 @@ namespace GestoreEventi
 
         //METODI
 
-        public void PrenotaPosti()
+        public void PrenotaPosti(int postiUtente)
         {
             Console.WriteLine("Quanti posti desideri prenotare?");
+            postiUtente = int.Parse(Console.ReadLine());
 
+            if(postiPrenotati > this.capienza)
+            {
+                throw new ArgumentException("Non ci sono posti a sufficienza da prenotare.");
+            }
+            else if (this.capienza == 0)
+            {
+                throw new ArgumentException("Posti disponibili per questo evento terminati.");
+            }
+            else if (this.data < DateTime.Now)
+            {
+                throw new ArgumentException("Questo evento è terminato.");
+            }
 
+            postiPrenotati += postiUtente;
 
         }
 
+        public void CancellaPrenotazione(int postiCancellatiUtente)
+        {
+            Console.WriteLine("Quanti posti desideri rimuovere?");
+            postiCancellatiUtente = int.Parse(Console.ReadLine());
+
+            if(postiCancellatiUtente > postiPrenotati)
+            {
+                throw new ArgumentException("Non ci sono posti a sufficienza da cancellare.");
+            }
+            else if (this.data < DateTime.Now)
+            {
+                throw new ArgumentException("Questo evento è terminato.");
+            }
+
+            postiPrenotati -= postiCancellatiUtente;
+        }
+
+
+        public override string ToString()
+        {
+            return data.ToString("dd/MM/yyyy") + titolo;
+        }
 
     }
 }
